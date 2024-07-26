@@ -3,13 +3,18 @@
 print("Benvenuto!")
 nome = input("Inserisci il tuo nome:")
 print("Ciao", nome)
+numero_partite = input("Quante partite vuoi fare?")
+
+while numero_partite.isdigit() == False:
+    numero_partite = input("Inserisci un numero intero per il numero delle partite:")
 
 POSSIBILI_SCELTE = ["sasso", "carta", "forbice"]
-partite=10
+partite=int(numero_partite)
 punteggio_utente=0
 punteggio_pc=0
 
 import random
+
 for i in range(partite):
     print("Scegli tra sasso, carta e forbice")
     scelta = input().lower()
@@ -30,9 +35,13 @@ for i in range(partite):
         else:
             print("Hai perso")
             punteggio_pc+=1
+    else:
+        print("Scelta non valida, partita annullata")
+        break
     if i==partite:
         break
-print("Fine del gioco")
+
+print(f'Fine del gioco, {nome}')
 print("Il tuo punteggio è", punteggio_utente)
 print("Il punteggio del pc è", punteggio_pc)
 if punteggio_utente>punteggio_pc:
